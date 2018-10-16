@@ -1,7 +1,4 @@
 //     Author: Rodney Shaghoulian
-//     Github: github.com/RodneyShag
-// HackerRank: hackerrank.com/RodneyShag
-
 import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
@@ -92,7 +89,6 @@ class SumInLeavesVisitor extends TreeVis {
     }
 
     public void visitNode(TreeNode node) {
-        // do nothing
     }
 
     public void visitLeaf(TreeLeaf leaf) {
@@ -151,7 +147,7 @@ public class Solution {
         Scanner scan = new Scanner(System.in);
         int numNodes = scan.nextInt();
         
-        /* Save nodes and colors */
+        
         values = new int[numNodes];
         colors = new Color[numNodes];
         map = new HashMap<>(numNodes);
@@ -167,7 +163,7 @@ public class Solution {
             int u = scan.nextInt();
             int v = scan.nextInt();
             
-            /* Edges are undirected: Add 1st direction */
+           
             HashSet<Integer> uNeighbors = map.get(u);
             if (uNeighbors == null) {                
                 uNeighbors = new HashSet<>();
@@ -175,7 +171,7 @@ public class Solution {
             }
             uNeighbors.add(v);
             
-            /* Edges are undirected: Add 2nd direction */
+            
             HashSet<Integer> vNeighbors = map.get(v);
             if (vNeighbors == null) {
                 vNeighbors = new HashSet<>();
@@ -201,8 +197,7 @@ public class Solution {
         /* Get HashSet of children and loop through them */
         for (Integer treeNum : map.get(parentNum)) {
             map.get(treeNum).remove(parentNum); // removes the opposite arrow direction
-            
-            /* Add child */
+           
             HashSet<Integer> grandChildren = map.get(treeNum);
             boolean childHasChild = (grandChildren != null && !grandChildren.isEmpty());
             Tree tree;
@@ -213,7 +208,6 @@ public class Solution {
             }
             parent.addChild(tree);
 
-            /* Recurse if necessary */
             if (tree instanceof TreeNode) {
                 addChildren((TreeNode) tree, treeNum);
             }
